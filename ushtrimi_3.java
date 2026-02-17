@@ -187,6 +187,12 @@ Which conclusion, under the circumstances, certainly admits Rudolf Steiner to th
         break;
     }
         }
+        System.out.println("Fjalet Unike jane: ");
+        for (Map.Entry<String, Integer> entry : map.entrySet()) {
+        if (entry.getValue() == 1) {
+            System.out.println(entry.getKey());
+        }
+    }
 
     System.out.println("Fjalia me e gjate eshte: " + mx_sentence + "|||||||||||||||KARAKTERET: " + max_sentence);
     System.out.println("Ne total kemi kaq fjali: " + count_sentences);
