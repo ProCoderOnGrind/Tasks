@@ -30,7 +30,10 @@ public class ushtrimi_4{
             }
             
             if(fields[0].length() <= 18 && fields[0].length() >= 1){
-                valid[0] = true;
+                for(int i = 0;i < fields[0].length();i++){
+                    if(fields[0].charAt(i) <= '9' && fields[0].charAt(i) >= '1')valid[0] = true;
+                    else valid[0] = false;
+                }
             } 
             else{
                 
