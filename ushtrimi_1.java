@@ -1,4 +1,8 @@
 import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+
 class Pika {
     double x;
     double y;
@@ -25,50 +29,39 @@ class Pika {
 
     public void kalkuloDistancen(Pika kryesore){
         double diference_x = kryesore.get_X() - this.x;
-        double diference_y = kryesore.get_X() - this.y;
+        double diference_y = kryesore.get_Y() - this.y;
         this.ruaj_distancen = Math.sqrt(diference_x * diference_x + diference_y * diference_y);
     }
 }
 public class ushtrimi_1 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        Pika[] arr = new Pika[100];
+        ArrayList<Pika> pikat = new ArrayList<>();
         System.out.print("Vendosni koordinatat e pikes kryesore: ");
         double kord_x = scanner.nextDouble();
         double kord_y = scanner.nextDouble();
         Pika pika_kryesore = new Pika(kord_x,kord_y);
+        pikat.add(pika_kryesore);
         System.out.println("Vendosni kordinatat e pikave te tjera.");
         System.out.print("Per te dale nga programi vendosni -1");
-        int count = 0;
         while(true){
             double x = scanner.nextDouble();
             double y = scanner.nextDouble();
-            int index = count;
+            if(x == -1 || y == -1) break;
             Pika pika_e_re = new Pika(x,y);
-            pika_e_re.kalkuloDistancen(pika_kryesore);
-            if(x == -1 || y == -1)break;
-
-            for(int i = 0;i < count;i++){
-                if(pika_e_re.ruaj_distancen < arr[i].ruaj_distancen){
-                    index = i;
-                    break;
+            pikat.add(pika_e_re);
+            for(Pika p : pikat){
+                p.ruaj_distancen = Math.sqrt((pika_e_re.get_X() - p.get_X()) * (pika_e_re.get_X() - p.get_X()) + (pika_e_re.get_Y() - p.get_Y()) * (pika_e_re.get_Y() - p.get_Y()));
+            }
+            Collections.sort(pikat, new Comparator<Pika>() {
+                public int compare(Pika p1, Pika p2){
+                    return Double.compare(p1.ruaj_distancen, p2.ruaj_distancen);
                 }
-            }
-
-            for(int i = count;i > index;i--){
-                arr[i] = arr[i-1];
-
-            }
-            arr[index] = pika_e_re;
-            count++;
+            });
             System.out.println("Pikat e renditura: ");
-            for(int i = 0;i < count;i++){
-                System.out.println(arr[i].get_X() + " " + arr[i].get_Y());
+            for(Pika p : pikat){
+                System.out.println(p.get_X() + " " + p.get_Y());
             }
-
-
-
-                
         }
         
     }
