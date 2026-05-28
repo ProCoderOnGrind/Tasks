@@ -52,12 +52,12 @@ public class ushtrimi_5 {
         inicializoKatalog();
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("Hej! Mire se erdhe tek kalkulatori i zbritjeve.");
+        System.out.println("Kalkulatori i Discounteve:");
 
         while (true) {
 
             ArrayList<String> emer = new ArrayList<>(katalog.keySet());
-            System.out.println("\nJa cfare kemi per momentin:\n");
+            System.out.println("\nPer momentin kemi:\n");
             for (int i = 0; i < emer.size(); i++) {
                 System.out.println("  " + (i + 1) + ". " + emer.get(i) + " - $" + katalog.get(emer.get(i)));
             }
@@ -137,7 +137,7 @@ public class ushtrimi_5 {
                 double totaliZbritje = Math.min(z1 + z2 + z3 + z4, totaliOrigjinal);
                 double totaliPerTuPaguar = totaliOrigjinal - totaliZbritje;
 
-                System.out.println("\nKëto janë zgjedhjet që bëre:");
+                System.out.println("\nKeto jane zgjedhjet qe bere:");
                 for (int i = 0; i < teZgjedhur.size(); i++) {
                     System.out.println("  - " + teZgjedhur.get(i) + " ($" + String.format("%.2f", cmimet.get(i)) + ")");
                 }
